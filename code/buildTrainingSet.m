@@ -5,6 +5,6 @@ function [carHogs, notCarHogs] = buildTrainingSet(carDir, notCarDir)
     carHogs = computeHOGs(carImgs, hCells, wCells);
     notCarHogs = computeHOGs(notCarImgs, hCells, wCells)
     
-    save('training-cars_brad-4-8.mat', 'carHogs', 'notCarHogs');
+    save('training-cars-cropped-4-8.mat', 'carHogs', 'notCarHogs');
     
 end
