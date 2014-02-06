@@ -1,0 +1,2 @@
+best accuracy is achieved at 4 height cells (vertical cells), and 10 horizontal cells (width cells).
+Acc = 0.9969

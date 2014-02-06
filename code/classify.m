@@ -1,4 +1,4 @@
-function classify(trainingData)
+function [accuracy, confusionMatrix] = classify(trainingData)
     load(trainingData); %carHogs, notCarHogs
     k = 10;
     meas = [carHogs; notCarHogs];
@@ -6,5 +6,5 @@ function classify(trainingData)
    % svmStruct = svmtrain(meas, groups);
    % species = svmclassify(svmStruct,notCarHogs(5,:));
     
-    kFoldCrossValidation(meas, groups, k);  
+    [accuracy, confusionMatrix] = kFoldCrossValidation(meas, groups, k); 
 end

@@ -1,4 +1,4 @@
-function kFoldCrossValidation(meas, groups, k)
+function [accuracy, confusionMatrix] =kFoldCrossValidation(meas, groups, k)
 
 
 %# number of cross-validation folds:
@@ -26,10 +26,10 @@ for i = 1:k                                  %# for each fold
 end
 
 %# get accuracy
-cp.CorrectRate
+accuracy = cp.CorrectRate
 
 %# get confusion matrix
 %# columns:actual, rows:predicted, last-row: unclassified instances
-cp.CountingMatrix
+confusionMatrix = cp.CountingMatrix
 
 end

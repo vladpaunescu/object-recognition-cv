@@ -1,4 +1,5 @@
 function [carHogs, notCarHogs] = buildTrainingSet(carDir, notCarDir)
+    % buildTrainingSet('E:\1_Work\CV\datasets\cars_cropped', 'E:\1_Work\CV\datasets\neg')
     hCells = 4;
     wCells = 8;
     [carImgs, notCarImgs] =  listImages(carDir, notCarDir);

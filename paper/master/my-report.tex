@@ -1,0 +1,65 @@
+% vim: set tw=78 sts=2 sw=2 ts=8 aw et ai:
+\documentclass[12pt]{article}
+
+\usepackage[paper=a4paper, top=2cm, bottom=3cm, left=2.5cm, right=2.5cm]{geometry}
+
+\usepackage{ucs}
+\usepackage[utf8x]{inputenc}
+\usepackage[english]{babel}
+%\usepackage{hyperref}	  % use \url{http://$URL} or \href{http://$URL}{Name}
+\usepackage{underscore}	  % underscores need not be escaped
+\usepackage{subfigure}
+\usepackage{verbatim}
+\usepackage{float}
+\usepackage{booktabs}     % professional tables
+\usepackage{parskip}
+\usepackage{amsmath}
+
+% Support for including graphics
+\usepackage{graphicx}
+\DeclareGraphicsExtensions{.pdf,.png,.jpg}
+
+\title{Object Category Recognition - Detecting Cars in Images}
+
+\author{Vlad Paunescu\\
+Faculty of Automatic Control and Computers\\
+University POLITEHNICA of Bucharest\\
+Splaiul Independenței 313, Bucharest, Romania, 060042 \\
+\emph{vlad.paunescu@cti.pub.ro}}
+
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+\input{src/abstract}
+\end{abstract}
+
+\section{Introduction}
+\label{sec:introduction}
+\input{src/introduction}
+
+
+\section{Method Description}
+\label{sec:architecture}
+\input{src/architecture}
+
+\section{Implementation}
+\label{sec:implementation}
+\input{src/implementation}
+
+\section{Conclusion and Further Work}
+\label{sec:conclusion}
+\input{src/conclusion}
+
+\section*{Acknowledgment}
+\label{sec:acknowledgment}
+
+The authors would like to thank Marius Leordeanu, Ph.D. for his continuing support and dedication. Also, we would like to thank our colleagues for this effective teamwork.
+
+\bibliographystyle{abbrv}
+\bibliography{my-report}
+
+\end{document}
