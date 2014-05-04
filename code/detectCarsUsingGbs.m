@@ -84,7 +84,7 @@ function detectCarsUsingGbs(gbsDir, carsDir, outDir, trainingData, carRects, hCe
         [X, map] = frame2im(f);
         imwrite(X,output); 
     end
-    predictedCarRectsFile = sprintf('mats/predicted-car-rects-%d-%d.mat', hCells, wCells);
+    predictedCarRectsFile = sprintf('E:/1_Work/CV/datasets/mats-serialized/mats-side/predicted-car-rects-%d-%d.mat', hCells, wCells);
     save(predictedCarRectsFile, 'areas', 'predictedCarRects', 'carRects', 'images');
        
 end
@@ -125,7 +125,7 @@ function [topRow, bottomRow, leftCol, rightCol] = determineBoundingBox(marked, t
         topRow = topRow - 1;
     end
     
-    while topRow < r && marked(bottomRow, maxJ) >= 0.3 * maxVal
+    while topRow < r && marked(bottomRow, maxJ) >= 0.3 * maxVal && bottomRow < r
         bottomRow = bottomRow + 1;
     end
     

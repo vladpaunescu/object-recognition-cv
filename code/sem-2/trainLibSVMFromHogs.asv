@@ -1,0 +1,53 @@
+function [ output_args ] = trainLibSVMFromHogs( trainingHogs )
+
+ matDir = 'E:\1_Work\CV\datasets\mats-serialized\mats-side';
+ hCells = 5;
+ wCells = 15;
+ trainingData = sprintf('%s/training-cars-cropped-%d-%d.mat', matDir, hCells, wCells);
+ labels = 
+ model = svmtrain(heart_scale_label, heart_scale_inst, '-b 1');
+ [l, a, p]=svmpredict(heart_scale_label, heart_scale_inst, model, '-b 1');
+
+ matDir = 'E:\1_Work\CV\datasets\mats-serialized\mats-side';
+    carRects = 'E:\1_Work\CV\datasets\mats-serialized\mats-side\car-rects.mat';
+    carsDir = 'E:\1_Work\CV\datasets\sideviews-cars';
+    gbsDir = 'E:\1_Work\CV\datasets\sideviews-cars-Gb';
+    baseDir =  'E:\1_Work\CV\datasets\results-side';
+    
+   % for hCells = 5:7 %2:10
+    %    for wCells = 4:15
+    hCells = 5;
+    wCells = 15;
+            trainingData = sprintf('%s/training-cars-cropped-%d-%d.mat', matDir, hCells, wCells);
+            outDir = sprintf('%s/results-%d-%d', baseDir, hCells, wCells);
+            detectCarsUsingGbs(gbsDir, carsDir, outDir, trainingData, carRects, hCells, wCells)
+    %    end
+   % end
+
+   detectCarsUsingGbs(gbsDir, carsDir, outDir, trainingData, carRects, hCells, wCells)
+     
+   load(carRects); %carRects, images
+    load(trainingData); %carHogs, notCarHogs
+    carsNum = size(carHogs, 1);
+    notCarsNum = size(notCarHogs, 1);
+    
+    trainPercent = 0.7;
+    trainCarsNum = floor(trainPercent * carsNum);
+    trainNotCarsNum = floor(trainPercent * notCarsNum);
+    
+    trainCarHogs = carHogs(1:trainCarsNum, :);
+    trainNotCarHogs = notCarHogs(1:trainNotCarsNum, :);
+    
+    testCarHogs = carHogs(trainCarsNum + 1 : end, :);
+    testNotCarHogs = notCarHogs(trainNotCarsNum + 1, :);
+
+    meas = [trainCarHogs; trainNotCarHogs];
+    groups = [ones(size(trainCarHogs,1),1); zeros(size(trainNotCarHogs,1),1)];
+    svmModel = svmtrain(meas, groups); 
+    
+    predictedCarRects = zeros(length(images), 4);
+    areas = zeros(length(images), 3);
+ 
+
+end
+
